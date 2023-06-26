@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<launch>
+
+    <param name="robot_description" command="xacro '$(find mobile_robot)/urdf/logo.xacro'"/>
+    <arg name="config_file" default="$(find mobile_robot)/config/robot.rviz"/>
+    
+    
+
+    <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher"/>
+    <!-- publishes fixed joints -->
+    <node pkg="joint_state_publisher_gui" type="joint_state_publisher_gui" name="joint_state_publisher_gui"/>
+    <!-- publishes dynamic joint states -->
+    <node pkg="rviz" type="rviz" name="rviz" args="-d $(arg config_file)"/>
+
+</launch>
